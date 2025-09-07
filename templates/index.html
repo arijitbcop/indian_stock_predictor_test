@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Stock Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Indian Stock Price Predictor</h1>
+        <div class="input-section">
+            <div class="search-container">
+                <input type="text" id="stockSymbol" placeholder="Enter stock symbol or name" autocomplete="off">
+                <div id="suggestions" class="suggestions-container"></div>
+            </div>
+            <button onclick="predictStock()">Predict</button>
+        </div>
+        <div id="loading" class="loading hidden">
+            <p>Analyzing stock data...</p>
+        </div>
+        <div id="result" class="result hidden">
+            <h2>Prediction Results</h2>
+            <div class="current-price">
+                <h3>Current Price</h3>
+                <p id="currentPrice">₹0.00</p>
+            </div>
+            <div class="predictions-container">
+                <h3>30-Day Price Predictions</h3>
+                <div id="predictionsGrid" class="predictions-grid">
+                    <!-- Predictions will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </div>
+        <div id="error" class="error hidden">
+            <p></p>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
