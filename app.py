@@ -297,7 +297,7 @@ def fetch_stock_data(symbol):
                 "symbol": symbol_suffix,
                 "outputsize": "full",
                 "apikey": API_KEY,
-                "market": "CNX"  # For Indian National Exchange
+                "market": "CNX"  # Adding back CNX market for Indian stocks
             }
             
             print(f"Making request to Alpha Vantage for symbol: {symbol_suffix}")
@@ -362,12 +362,9 @@ def fetch_stock_data(symbol):
     # First, strip any existing suffixes and get base symbol
     base_symbol = symbol.replace('.NS', '').replace('.BSE', '').replace('.BO', '')
     
-    # For Indian stocks on Alpha Vantage, we just need the base symbol
-    # Alpha Vantage automatically handles Indian exchanges
+    # For Indian stocks, try BSE format
     suffixes = [
-        base_symbol,           # Try the base symbol first
-        f"{base_symbol}.BSE",  # Fallback to explicit BSE format
-        base_symbol + ".NS"    # Fallback to NSE format
+        f"{base_symbol}.BSE"    # Try BSE format      # Fallback to base symbol
     ]
     print(f"Will try the following symbol formats: {suffixes}")
     
