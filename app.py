@@ -308,7 +308,9 @@ def fetch_stock_data(symbol):
             
             data = response.json()
             print(f"API Response keys: {list(data.keys())}")  # Print only the keys to avoid huge output
-            
+            if "Information" in data.keys():
+                print(f"Alpha Vantage Information: {data['Information']}")
+
             # Debug the API response
             if "Error Message" in data:
                 print(f"Alpha Vantage Error: {data['Error Message']}")
